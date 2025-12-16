@@ -1,0 +1,72 @@
+body {
+    background: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar-brand img {
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.card img {
+    border-radius: 12px 12px 0 0;
+}
+
+footer {
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    text-align: center;
+    padding: 30px 15px;
+    margin-top: 40px;
+    backdrop-filter: blur(10px);
+}
+
+/* Estilos para el navbar */
+.navbar {
+    background: rgba(0, 0, 0, 0.8) !important;
+    backdrop-filter: blur(10px);
+}
+
+.navbar-brand {
+    font-size: 1.3rem;
+    letter-spacing: 0.5px;
+}
+
+.nav-link {
+    margin: 0 10px;
+    transition: 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #28a745 !important;
+}
+
+/* Estilos para botones */
+.btn-dark {
+    background: rgba(33, 37, 41, 0.9);
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-dark:hover {
+    background: #212529;
+    transform: scale(1.05);
+}
+
+/* Sombra general */
+* {
+    box-sizing: border-box;
+}
