@@ -1,5 +1,4 @@
 
-{{-- Incluye el encabezado común del sitio (header) --}}
 @include('layout.header')
 
 {{-- Contenedor principal sin padding --}}
@@ -152,6 +151,5 @@
     </div>
 </div>
 
-{{-- Incluye el pie de página (footer) --}}
 @include('layout.footer')
 

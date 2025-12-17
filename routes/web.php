@@ -4,25 +4,32 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductoController;
 
-// Página principal ( / )
+/*
+RUTAS PRINCIPALES
+*/
+
+// Página principal
 Route::get('/', [HomeController::class, 'index']);
 
 // Ruta alternativa /inicio
 Route::get('/inicio', [HomeController::class, 'index']);
 
+/*
+RUTAS DE PRODUCTOS
+*/
 
-// Listado principal de productos
+// Listado de productos
 Route::get('/productos', [ProductoController::class, 'index']);
 
-//  Buscador de productos
+// Buscar productos por término
 Route::get('/productos/buscar/{termino}', [ProductoController::class, 'buscar']);
 
-// Detalle de producto por SKU
+// Ver detalle de un producto por SKU
 Route::get('/productos/detalle/{sku}', [ProductoController::class, 'detalle']);
 
-//  Cambiar estado de un producto
+// Cambiar estado del producto (ADD / INA)
 Route::get(
-    '/productos/estado/{id}/{estado}',
+    '/productos/estado/{sku}/{estado}',
     [ProductoController::class, 'cambiarEstado']
 );
 

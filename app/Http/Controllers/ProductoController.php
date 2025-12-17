@@ -3,96 +3,92 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 /*
-    Controlador Producto
- */
+CONTROLADOR DE PRODUCTOS
+*/
 class ProductoController extends Controller
 {
     /*
-    Constructor
+    LISTADO DE PRODUCTOS
     */
-    public function __construct()
+    public function index()
     {
-        // Intencionalmente vacío por ahora
-        // El modelo se integrará más adelante
-    }
+        // Obtenemos todos los productos desde la base de datos
+        $productos = DB::table('productos')->get();
 
-    /*
-        LISTADO CON FILTROS
-     */
-    public function index(Request $request)
-    {
-        // Capturamos el filtro desde la URL (?filtro=activos)
-        $filtro = $request->query('filtro');
-
-        /*
-         * ⚠️ Aquí irá la lógica del modelo más adelante
-         * En CodeIgniter:
-         * $this->productoModel->where(...)->findAll();
-         */
-
-        // Retornamos la vista (por ahora sin datos)
+        // Enviamos los datos a la vista productos
         return view('productos', [
-            'titulo'       => 'Listado de Productos',
-            'productos'    => [],
-            'filtroActual' => $filtro
+            'productos' => $productos
         ]);
     }
 
     /*
-        DETALLE DEL PRODUCTO
-     */
+    DETALLE DE UN PRODUCTO
+    */
     public function detalle($sku)
     {
-        /*
-         * Aquí luego irá:
-         * $this->productoModel->find($sku)
-         */
+        // Buscamos el producto por su SKU
+        $producto = DB::table('productos')
+            ->where('sku', $sku)
+            ->first();
 
-        // Si no hay producto, simulamos 404
-        abort(404, 'Producto no encontrado');
-    }
+        // Si no existe, mostramos error 404
+        if (!$producto) {
+            abort(404, 'Producto no encontrado');
+        }
 
-    /**
-     * 3️⃣ BUSCADOR
-     */
-    public function buscar($termino)
-    {
-        /*
-         * Aquí luego irá la búsqueda por nombre
-         */
-
-        return view('productos', [
-            'titulo'    => 'Resultados de búsqueda: ' . $termino,
-            'productos' => []
+        // Enviamos el producto a la vista detalle
+        return view('detalle', [
+            'producto' => $producto
         ]);
     }
 
-    /**
-     * 4️⃣ CAMBIAR ESTADO
-     */
-    public function cambiarEstado($sku, $estado)
+    /*
+    BUSCAR PRODUCTOS
+    */
+    public function buscar($termino)
     {
-        /*
-         * Aquí luego irá:
-         * update estado
-         */
-
-        return redirect()->to("/productos/detalle/{$sku}");
-    }
-
-    /**
-     * 5️⃣ FILTRAR PRODUCTOS POR ESTADO
-     */
-    public function filtrar($estado)
-    {
-        /*
-         * Aquí luego irá el filtro por estado
-         */
+        // Buscamos productos por nombre
+        $productos = DB::table('productos')
+            ->where('nombre', 'LIKE', "%{$termino}%")
+            ->get();
 
         return view('productos', [
-            'productos' => []
+            'productos' => $productos
+        ]);
+    }
+
+    /*
+    CAMBIAR ESTADO (ADD / INA)
+    
+    */
+    public function cambiarEstado($sku, $estado)
+    {
+        // Actualizamos el estado del producto
+        DB::table('productos')
+            ->where('sku', $sku)
+            ->update([
+                'estado' => $estado
+            ]);
+
+        // Redirigimos nuevamente al detalle del producto
+        return redirect("/productos/detalle/{$sku}");
+    }
+
+    /*
+    FILTRAR PRODUCTOS POR ESTADO
+    */
+    public function filtrar($estado)
+    {
+        // Filtramos los productos según su estado
+        $productos = DB::table('productos')
+            ->where('estado', $estado)
+            ->get();
+
+        return view('productos', [
+            'productos' => $productos
         ]);
     }
 }
