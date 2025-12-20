@@ -50,7 +50,8 @@ class PostController extends Controller
         $producto->save();
 
         //Redireccionamos con un mensaje de éxito
-        return redirect()-> back()->with('success', 'Producto creado exitosamente. Recuerda subir la foto en la carpeta de img');
+        return redirect()->route('productos.index')
+        ->with('success', 'Producto "' . $producto->nombre . '" creado exitosamente.');
     }
 
     /**
@@ -94,17 +95,18 @@ class PostController extends Controller
         //  Buscamos el producto donde la columna 'sku' sea igual al $sku recibido
         $producto = Producto::where('sku', $sku)->first();
 
-        // Asignamos los nuevos valores recibidos del formulario
+        // Asignamos los nuevos valores
         $producto->nombre = $request->input('nombre');  
         $producto->stock = $request->input('stock');
         $producto->valor = $request->input('valor');
         $producto->descripción = $request->input('descripcion');
 
-        // Guardamos los cambios en la base de datos
+        // Guardamos
         $producto->save();
         
-        // Redireccionamos con un mensaje de éxito
-        return redirect()-> back()->with('success', 'Producto actualizado exitosamente.');
+        // Redireccionamos a la lista de productos (mejor opción)
+        return redirect()->route('productos.edit', $producto->sku)
+        ->with('success', 'Producto actualizado exitosamente.');
     }
 
     /**

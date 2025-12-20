@@ -15,7 +15,7 @@
                 
                 {{-- Encabezado con color de fondo degradado (inline style) --}}
                 <div class="card-header text-center py-4 border-0 rounded-top" 
-                     style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    style="background: linear-gradient(135deg, #4ade80 0%, #16a34a 100%);">
                     {{-- Icono de usuario --}}
                     <i class="fas fa-user-circle fa-3x text-white mb-3"></i>
                     {{-- Título --}}
@@ -41,11 +41,11 @@
                             </label>
                             {{-- Input --}}
                             <input type="email" 
-                                   name="email" 
-                                   id="email" 
-                                   class="form-control form-control-lg" 
-                                   placeholder="tu@email.com"
-                                   required>
+                                    name="email" 
+                                    id="email" 
+                                    class="form-control form-control-lg" 
+                                    placeholder="tu@email.com"
+                                    required>
                         </div>
                         
                         {{-- Campo: Contraseña --}}
@@ -56,11 +56,11 @@
                             </label>
                             {{-- Input --}}
                             <input type="password" 
-                                   name="password" 
-                                   id="password" 
-                                   class="form-control form-control-lg" 
-                                   placeholder="••••••••"
-                                   required>
+                                    name="password" 
+                                    id="password" 
+                                    class="form-control form-control-lg" 
+                                    placeholder="••••••••"
+                                    required>
                         </div>
                         
                         {{-- Botón de envío --}}
@@ -68,7 +68,7 @@
                             {{-- Botón con degradado inline --}}
                             <button type="submit" 
                                     class="btn btn-lg text-white" 
-                                    style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none;">
+                                    style="background: linear-gradient(135deg, #4ade80 0%, #16a34a 100%);">
                                 <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
                             </button>
                         </div>
