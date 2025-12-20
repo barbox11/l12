@@ -35,15 +35,7 @@ RUTAS DE PRODUCTOS
 //);
 
 // Filtrar productos por estado
-<<<<<<< Updated upstream
-Route::get(
-    '/productos/filtrar/{estado}',
-    [ProductoController::class, 'filtrar']
-);
-
-Route::resource('posts', PostController::class);
-=======
-//Route::get(
+// Route::get(
 //    '/productos/filtrar/{estado}',
 //    [ProductoController::class, 'filtrar']
 //);
@@ -51,4 +43,3 @@ Route::resource('posts', PostController::class);
 //// Esta línea crea TODAS las rutas del CRUD (index, store, update, destroy, etc.)
 // Las URLs serán: /posts, /posts/crear, /posts/1, etc.
 Route::resource('productos', PostController::class);
->>>>>>> Stashed changes

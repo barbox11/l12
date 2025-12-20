@@ -12,14 +12,6 @@
                 Nuestra Colección
             </h2>
 
-            {{-- BOTÓN PARA ABRIR EL FORMULARIO PARA CREAR UN PRODUCTO --}}
-            <div class="text-center mb-4">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCrear">
-                    + Agregar Nuevo Producto
-                </button>
-            </div>
-
-
             {{-- LÍNEA DECORATIVA --}}
             <hr class="mx-auto text-success"
                 style="width: 100px; height: 3px; opacity: 1;">
