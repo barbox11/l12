@@ -134,13 +134,61 @@
                             ${{ number_format($producto->valor, 0, ',', '.') }}
                         </td>
 
-                        {{-- ÚNICA ACCIÓN: VER DETALLE --}}
-                        <td>
-                            <a href="{{ route('productos.show', $producto->sku) }}"
-                                class="btn btn-outline-light btn-sm rounded-pill px-3">
-                                Ver Detalle
-                            </a>
-                        </td>
+                        <td class="text-center">
+                            <div class="btn-group" role="group">
+
+                                {{-- Ver Detalle --}}
+                                <a href="{{ route('productos.show', $producto->sku) }}"
+                                    class="btn btn-outline-light btn-sm rounded-pill px-3 me-2">
+                                    Ver Detalle
+                                </a>
+
+                                {{-- Eliminar con modal de confirmación --}}
+                                <button type="button" 
+                                        class="btn btn-outline-danger btn-sm rounded-pill px-3"
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#modalEliminarProducto"
+                                        onclick="cargarDatosEliminar('{{ $producto->sku }}', '{{ addslashes($producto->nombre) }}')">
+                                    Eliminar
+                                </button>
+                            
+                            </div>
+                {{-- MODAL CONFIRMACIÓN ELIMINAR PRODUCTO --}}
+                        <div class="modal fade" id="modalEliminarProducto" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header bg-danger text-white">
+                                        <h5 class="modal-title">Confirmar eliminación</h5>
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                                    </div>
+
+                                    <div class="modal-body text-center py-4">
+                                        <i class="bi bi-exclamation-triangle text-danger" style="font-size: 3rem;"></i>
+                                        <h4 class="mt-3">¿Estás seguro?</h4>
+                                        <p class="text-muted">
+                                            Vas a eliminar el producto <strong id="nombreProductoEliminar"></strong>.<br>
+                                            Esta acción <strong>no se puede deshacer</strong>.
+                                        </p>
+                                    </div>
+
+                                    <div class="modal-footer justify-content-center">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                            Cancelar
+                                        </button>
+
+                                        {{-- Formulario que se envía al confirmar --}}
+                                        <form id="formEliminarProducto" method="POST" style="display:inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">
+                                                Sí, eliminar permanentemente
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
 
                     </tr>
                     @endforeach
@@ -156,6 +204,11 @@
 
                 </tbody>
             </table>
+
+            {{-- PAGINADOR --}}
+            <div class="d-flex justify-content-center mt-4">
+            {{ $productos->links() }}
+    </div>
         </div>
     </div>
 </div>
