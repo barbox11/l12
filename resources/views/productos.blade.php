@@ -33,7 +33,7 @@
             </button>
         </div>
 
-        {{-- BOTONES DE FILTRO --}}
+        {{-- BOTONES DE FILTRO
         <div class="d-flex justify-content-end mb-3 gap-2">
 
             <span class="align-self-center text-white me-2">
@@ -42,26 +42,31 @@
 
             <div class="btn-group" role="group">
 
-                {{-- TODOS LOS PRODUCTOS --}}
+                 TODOS LOS PRODUCTOS
                 <a href="{{ url('productos') }}"
                     class="btn btn-outline-secondary">
                     Todos
                 </a>
+                
 
-                {{-- PRODUCTOS ACTIVOS --}}
+                 PRODUCTOS ACTIVOS
                 <a href="{{ url('productos/filtrar/activo') }}"
                     class="btn btn-outline-success">
                     Activos
                 </a>
+                
 
-                {{-- PRODUCTOS INACTIVOS --}}
+                 PRODUCTOS INACTIVOS
                 <a href="{{ url('productos/filtrar/inactivo') }}"
                     class="btn btn-outline-danger">
                     Inactivos
                 </a>
+            
 
             </div>
         </div>
+        --}}
+
 
         {{-- TABLA RESPONSIVE --}}
         <div class="table-responsive">

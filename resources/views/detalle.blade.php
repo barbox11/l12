@@ -77,6 +77,9 @@
                     Agregar a carrito
                 </button>
 
+                {{-- BLOQUE COMENTADO PORQUE NO LO VAMOS A USAR: BOTÓN CAMBIAR ESTADO --}}
+                {{-- Si el producto está activo, permitimos inactivarlo   --}}
+                {{--
                 @if ($producto->estado !== 'inactiva')
 
                     <a
@@ -86,18 +89,19 @@
                     </a>
 
                 @else
-                    {{-- Si está inactivo, permitimos activarlo --}}
+                    Si está inactivo, permitimos activarlo (Nota: quité las llaves de comentario aquí para evitar error)
                     <a
                         href="{{ url('productos/estado/' . $producto->sku . '/activa') }}"
                         class="btn btn-success">
                         Activar Producto
                     </a>
                 @endif
+                --}}
             </div>
 
             {{--
                 ESTADO ACTUAL
-            --}}
+            
             <div class="mt-3">
                 Estado actual:
 
@@ -111,6 +115,7 @@
                     </span>
                 @endif
             </div>
+            --}}
 
         </div>
     </div>
