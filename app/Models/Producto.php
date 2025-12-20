@@ -4,13 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Producto extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     // Importante: Dile que use la tabla 'productos' (la que ya tienes llena de plantas)
-    protected $table = 'productos'; 
+    protected $table = 'productos';
+
+    // Importante: Dile que la clave primaria de la tabla es 'sku'
+    protected $primaryKey = 'sku';
+    public $incrementing = false;
+    protected $keyType = 'string'; 
 
     // Estos son los campos que permitiremos guardar desde el formulario
     protected $fillable = [
