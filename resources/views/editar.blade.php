@@ -61,11 +61,11 @@
                 
                 {{-- Campo: Descripción --}}
                 <div class="mb-3">
-                    <label for="descripcion" class="form-label">Descripción</label>
-                    <textarea name="descripcion" 
-                                id="descripcion" 
+                    <label for="descripción" class="form-label">Descripción</label>
+                    <textarea name="descripción" 
+                                id="descripción" 
                                 class="form-control" 
-                                rows="4">{{ $producto->descripcion }}</textarea>
+                                rows="4">{{ $producto->descripción }}</textarea>
                 </div>
                 
                 {{-- Contenedor de botones con espaciado --}}

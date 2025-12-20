@@ -43,7 +43,7 @@ class PostController extends Controller
         $producto->nombre = $request->input('nombre');
         $producto->valor = $request->input('valor');
         $producto->stock = $request->input('stock');
-        $producto->descripción = $request->input('descripcion');
+        $producto->descripción = $request->input('descripción');
         $producto->estado = "activo"; // Al crear un producto, por defecto estará activo
 
         //Guardamos el producto en la base de datos
@@ -92,6 +92,8 @@ class PostController extends Controller
      */
     public function update(Request $request, string $sku)
     {
+        // Esto detendrá el código y mostrará en pantalla qué llegó para solucionar el error
+        //dd($request->all());
         //  Buscamos el producto donde la columna 'sku' sea igual al $sku recibido
         $producto = Producto::where('sku', $sku)->first();
 
@@ -99,7 +101,7 @@ class PostController extends Controller
         $producto->nombre = $request->input('nombre');  
         $producto->stock = $request->input('stock');
         $producto->valor = $request->input('valor');
-        $producto->descripción = $request->input('descripcion');
+        $producto->descripción = $request->input('descripción');
 
         // Guardamos
         $producto->save();

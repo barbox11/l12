@@ -141,7 +141,8 @@
 
                         <td class="text-center">
                             <div class="btn-group" role="group">
-
+                                
+                            
                                 {{-- Botón Ver Detalle --}}
                                 <a href="{{ route('productos.show', $producto->sku) }}"
                                     class="btn btn-outline-light btn-sm rounded-pill px-3 me-2">
@@ -152,8 +153,7 @@
                                 <button type="button" 
                                         class="btn btn-outline-danger btn-sm rounded-pill px-3"
                                         data-bs-toggle="modal" 
-                                        data-bs-target="#modalEliminarProducto"
-                                        onclick="cargarDatosEliminar('{{ $producto->sku }}', '{{ addslashes($producto->nombre) }}')">
+                                        data-bs-target="#modalEliminarProducto">
                                     Eliminar
                                 </button>
 
@@ -165,7 +165,7 @@
                             
                             </div>
                 {{-- MODAL CONFIRMACIÓN ELIMINAR PRODUCTO --}}
-                        <div class="modal fade" id="modalEliminarProducto" tabindex="-1" aria-hidden="true">
+                        <div class="modal fade" id="modalEliminarProducto" {{ $producto->sku }} tabindex="-1" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header bg-danger text-white">
@@ -307,7 +307,7 @@
                     <div class="mb-3">
                         <label class="form-label">Descripción</label>
                         <textarea 
-                            name="descripcion"
+                            name="descripción"
                             class="form-control"
                             rows="3">
                         </textarea>

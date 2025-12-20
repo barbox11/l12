@@ -105,7 +105,7 @@
             <div class="mt-3">
                 Estado actual:
 
-                @if ($producto->estado === 'activa')
+                @if ($producto->estado === 'activo')
                     <span class="badge bg-success">
                         Activo
                     </span>
