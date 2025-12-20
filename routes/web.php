@@ -53,7 +53,7 @@ Route::get('/login', [
 Route::post('/login', [
   loginController::class, 
   'loginCustom'])->name('login.custom');
-// Rutas de la página logout
+// Rutas para el logout
 Route::post('/logout', function () {
     Auth::logout();
     request()->session()->invalidate();
