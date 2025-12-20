@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\PostController;
 
 /*
 RUTAS PRINCIPALES
@@ -38,3 +39,5 @@ Route::get(
     '/productos/filtrar/{estado}',
     [ProductoController::class, 'filtrar']
 );
+
+Route::resource('posts', PostController::class);

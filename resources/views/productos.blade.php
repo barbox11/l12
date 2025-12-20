@@ -21,6 +21,18 @@
             </p>
         </div>
 
+                {{-- 
+            BOTÓN PARA ABRIR EL MODAL DE CREAR PRODUCTO
+        --}}
+        <div class="d-flex justify-content-end mb-4">
+            <button 
+                class="btn btn-success"
+                data-bs-toggle="modal"
+                data-bs-target="#modalCrearProducto">
+                + Crear nuevo producto
+            </button>
+        </div>
+
         {{-- BOTONES DE FILTRO --}}
         <div class="d-flex justify-content-end mb-3 gap-2">
 
@@ -142,6 +154,121 @@
 
                 </tbody>
             </table>
+        </div>
+    </div>
+</div>
+{{-- 
+    MODAL CREAR PRODUCTO
+--}}
+<div 
+    class="modal fade" 
+    id="modalCrearProducto" 
+    tabindex="-1" 
+    aria-hidden="true">
+
+    <div class="modal-dialog modal-lg">
+
+        <div class="modal-content">
+
+            {{-- CABECERA DEL MODAL --}}
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    Crear nuevo producto
+                </h5>
+
+                {{-- Botón X para cerrar --}}
+                <button 
+                    type="button" 
+                    class="btn-close" 
+                    data-bs-dismiss="modal">
+                </button>
+            </div>
+
+            {{-- 
+                FORMULARIO
+                action apunta a /productos (store)
+            --}}
+            <form method="POST" action="{{ route('productos.store') }}">
+
+                {{-- Protección CSRF obligatoria en Laravel --}}
+                @csrf
+
+                <div class="modal-body">
+
+                    {{-- SKU --}}
+                    <div class="mb-3">
+                        <label class="form-label">SKU</label>
+                        <input 
+                            type="text"
+                            name="sku"
+                            class="form-control"
+                            required>
+                    </div>
+
+                    {{-- NOMBRE --}}
+                    <div class="mb-3">
+                        <label class="form-label">Nombre</label>
+                        <input 
+                            type="text"
+                            name="nombre"
+                            class="form-control"
+                            required>
+                    </div>
+
+                    {{-- STOCK --}}
+                    <div class="mb-3">
+                        <label class="form-label">Stock</label>
+                        <input 
+                            type="number"
+                            name="stock"
+                            class="form-control"
+                            min="0"
+                            required>
+                    </div>
+
+                    {{-- VALOR --}}
+                    <div class="mb-3">
+                        <label class="form-label">Valor</label>
+                        <input 
+                            type="number"
+                            name="valor"
+                            class="form-control"
+                            min="0"
+                            required>
+                    </div>
+
+                    {{-- DESCRIPCIÓN --}}
+                    <div class="mb-3">
+                        <label class="form-label">Descripción</label>
+                        <textarea 
+                            name="descripcion"
+                            class="form-control"
+                            rows="3">
+                        </textarea>
+                    </div>
+
+                </div>
+
+                {{-- PIE DEL MODAL --}}
+                <div class="modal-footer">
+
+                    <button 
+                        type="button" 
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal">
+                        Cancelar
+                    </button>
+
+                    <button 
+                        type="submit" 
+                        class="btn btn-success">
+                        Guardar producto
+                    </button>
+
+                </div>
+
+            </form>
+
         </div>
     </div>
 </div>
