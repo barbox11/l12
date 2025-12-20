@@ -10,10 +10,10 @@ RUTAS PRINCIPALES
 */
 
 // Página principal
-//Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index']);
 
 // Ruta alternativa /inicio
-//Route::get('/inicio', [HomeController::class, 'index']);
+Route::get('/inicio', [HomeController::class, 'index']);
 
 /*
 RUTAS DE PRODUCTOS
