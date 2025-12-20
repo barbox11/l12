@@ -46,7 +46,7 @@
 
                 {{-- Si la descripción viene vacía, mostramos texto por defecto --}}
                 <p>
-                    {{ $producto->descripcion ?? 'Sin descripción' }}
+                    {{ $producto->descripción ?? 'Sin descripción' }}
                 </p>
             </div>
 

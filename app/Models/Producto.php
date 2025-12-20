@@ -30,6 +30,6 @@ class Producto extends Model
     ];
 
     // Si tu tabla en la base de datos NO tiene columnas created_at y updated_at
-    // debes poner esto en false, si no, te dará error al guardar.
-    public $timestamps = false; 
+    // debes poner esto en false, si no, te dará error al guardar. Si las tiene, déjalo en true.
+    public $timestamps = true; 
 }

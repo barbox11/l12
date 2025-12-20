@@ -137,13 +137,13 @@
                         <td class="text-center">
                             <div class="btn-group" role="group">
 
-                                {{-- Ver Detalle --}}
+                                {{-- Botón Ver Detalle --}}
                                 <a href="{{ route('productos.show', $producto->sku) }}"
                                     class="btn btn-outline-light btn-sm rounded-pill px-3 me-2">
                                     Ver Detalle
                                 </a>
 
-                                {{-- Eliminar con modal de confirmación --}}
+                                {{-- Botón Eliminar con modal de confirmación --}}
                                 <button type="button" 
                                         class="btn btn-outline-danger btn-sm rounded-pill px-3"
                                         data-bs-toggle="modal" 
@@ -151,6 +151,12 @@
                                         onclick="cargarDatosEliminar('{{ $producto->sku }}', '{{ addslashes($producto->nombre) }}')">
                                     Eliminar
                                 </button>
+
+                                {{-- Botón Editar Producto --}}
+                                <a href="{{ route('productos.edit', $producto->sku) }}"
+                                    class="btn btn-outline-warning btn-sm rounded-pill px-3 ms-2">
+                                    Editar
+                                </a>
                             
                             </div>
                 {{-- MODAL CONFIRMACIÓN ELIMINAR PRODUCTO --}}
@@ -177,7 +183,7 @@
                                         </button>
 
                                         {{-- Formulario que se envía al confirmar --}}
-                                        <form id="formEliminarProducto" method="POST" style="display:inline;">
+                                        <form id="formEliminarProducto" action="{{ route('productos.destroy', $producto->sku) }}" method="POST" style="display:inline;">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger">

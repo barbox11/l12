@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Producto; // Este modelo lo creamos para manejar la tabla productos
 use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
 
 class PostController extends Controller
 {
@@ -69,17 +70,41 @@ class PostController extends Controller
         return view('detalle', compact('producto'));
 
     }
-    public function edit(string $id)
-    {
-        //
+    public function edit(string $sku)
+    {   
+        // 1. Aquí creas una variable llamada $producto
+        // Buscamos el producto donde la columna 'sku' sea igual al $sku recibido
+        $producto = Producto::where('sku', $sku)->first();
+
+        // Si no existe, mostramos error 404
+        if (!$producto) {
+            abort(404, 'Producto no encontrado');
+        }
+        
+        // 2. Aquí 'compact' busca esa variable $producto y la empaqueta
+        // Si existe, mostramos la vista 'editar'
+        return view('editar', compact('producto'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $sku)
     {
-        //
+        //  Buscamos el producto donde la columna 'sku' sea igual al $sku recibido
+        $producto = Producto::where('sku', $sku)->first();
+
+        // Asignamos los nuevos valores recibidos del formulario
+        $producto->nombre = $request->input('nombre');  
+        $producto->stock = $request->input('stock');
+        $producto->valor = $request->input('valor');
+        $producto->descripción = $request->input('descripcion');
+
+        // Guardamos los cambios en la base de datos
+        $producto->save();
+        
+        // Redireccionamos con un mensaje de éxito
+        return redirect()-> back()->with('success', 'Producto actualizado exitosamente.');
     }
 
     /**
@@ -87,6 +112,9 @@ class PostController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        //Es para eliminar un producto lógicamente (soft delete)
+        $producto = Producto::where('sku', $id)->first();
+        $producto->delete();
+        return redirect()-> back()->with('success', 'Producto eliminado exitosamente.');
     }
 }
