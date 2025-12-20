@@ -136,7 +136,7 @@
 
                         {{-- ÚNICA ACCIÓN: VER DETALLE --}}
                         <td>
-                            <a href="{{ url('productos/detalle/' . $producto->sku) }}"
+                            <a href="{{ route('productos.show', $producto->sku) }}"
                                 class="btn btn-outline-light btn-sm rounded-pill px-3">
                                 Ver Detalle
                             </a>

@@ -42,7 +42,17 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
-        //
+        // Buscamos el producto donde la columna 'sku' sea igual al $id recibido
+        $producto = Producto::where('sku', $id)->first();
+
+        // Si no existe, mostramos error 404
+        if (!$producto) {
+            abort(404, 'Producto no encontrado');
+        }
+
+        // Si existe, mostramos la vista 'detalle'
+        return view('detalle', compact('producto'));
+
     }
 
     /**
