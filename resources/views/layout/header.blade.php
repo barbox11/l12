@@ -67,6 +67,40 @@
                     </a>
                 </li>
 
+                {{-- ENLACE A LOGIN 
+                    Si es un usuario invitado, le muestre iniciar sesión
+                    --}}
+                @guest
+                    <li class="nav-item">
+                        <a class="nav-link fs-5" href="{{ route('login') }}">
+                            Iniciar Sesión
+                        </a>
+                    </li>    
+                @endguest
+                {{-- Si es un usuario autenticado, le muestre el carrito y cerrar sesión --}}
+                
+                @auth
+                <li class="nav-item">
+                        <span class="nav-link fs-5">
+                            Hola, {{ Auth::user()->name }}
+                        </span>
+                    </li>
+                {{-- ENLACE A CARRITO --}}
+                    <li class="nav-item">
+                        <a class="nav-link fs-5" href="{{ route('carrito.index') }}">
+                            Carrito
+                        </a>
+                    </li>
+
+                    {{-- ENLACE A CERRAR SESIÓN --}}
+                    <li class="nav-item">
+                        <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="nav-link fs-5 bg-transparent border-0">Cerrar Sesión</button>
+                        </form>
+                    </li>
+                @endauth
+
             </ul>
         </div>
     </div>

@@ -2,9 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\loginController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 RUTAS PRINCIPALES
@@ -53,6 +53,13 @@ Route::get('/login', [
 Route::post('/login', [
   loginController::class, 
   'loginCustom'])->name('login.custom');
+// Rutas de la página logout
+Route::post('/logout', function () {
+    Auth::logout();
+    request()->session()->invalidate();
+    request()->session()->regenerateToken();
+    return redirect('/inicio');
+})->name('logout');
 
 
 // Ruta de la página carrito
