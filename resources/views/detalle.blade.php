@@ -72,6 +72,9 @@
                 <a href="{{ url('/productos') }}" class="btn btn-secondary">
                     Volver
                 </a>
+                <a href="{{ url('/productos') }}" class="btn btn-secondary">
+                    Agregar a carrito 
+                </a>
 
                 @if ($producto->estado !== 'inactiva')
 
