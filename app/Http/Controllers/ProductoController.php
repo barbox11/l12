@@ -62,19 +62,18 @@ class ProductoController extends Controller
         ]);
     }
 
-    /*
-    CAMBIAR ESTADO (ADD / INA)
-    
-    */
+
     public function cambiarEstado($sku, $estado)
     {
-        
-        // Actualizamos el estado del producto
-        DB::table('productos')
-            ->where('sku', $sku)
-            ->update([
-                'estado' => $estado
-            ]);
+        // Determinar qué nombre poner según el estado
+    $nuevoNombre = ($estado == 'activo') ? 'activo' : 'inactivo';
+    
+    // Actualizamos el NOMBRE del producto
+    DB::table('productos')
+        ->where('sku', $sku)
+        ->update([
+            'nombre' => $nuevoNombre  // ← Ahora cambia el NOMBRE
+        ]);
 
         // Redirigimos nuevamente al detalle del producto
         return redirect("/productos/detalle/{$sku}");
