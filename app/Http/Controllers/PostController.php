@@ -14,11 +14,7 @@ class PostController extends Controller
     public function index()
     {
         // 1. Pedimos todas las plantas a la base de datos
-<<<<<<< HEAD
-        $productos = Producto::paginate(10);
-=======
         $productos = Producto::paginate(10); // Paginamos de 10 en 10
->>>>>>> 679d464d4cc88d609d4d3b42cfd542b8f28d7b45
 
         // 2. Se las enviamos a la vista 'productos'
         // Usamos compact() para crear el array automáticamente

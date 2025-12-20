@@ -166,7 +166,7 @@
                                         <i class="bi bi-exclamation-triangle text-danger" style="font-size: 3rem;"></i>
                                         <h4 class="mt-3">¿Estás seguro?</h4>
                                         <p class="text-muted">
-                                            Vas a eliminar el producto <strong id="nombreProductoEliminar"></strong>.<br>
+                                            Vas a eliminar el producto <strong> {{ $producto->nombre }}, {{ $producto->sku }}</strong>.<br>
                                             Esta acción <strong>no se puede deshacer</strong>.
                                         </p>
                                     </div>
