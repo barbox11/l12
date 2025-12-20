@@ -49,6 +49,10 @@ Route::resource('productos', PostController::class);
 Route::get('/login', [
   loginController::class, 
   'showLoginForm'])->name('login');
+// Proceso de login
+Route::post('/login', [
+  loginController::class, 
+  'loginCustom'])->name('login.custom');
 
 
 // Ruta de la página carrito
