@@ -153,7 +153,7 @@
                                 <button type="button" 
                                         class="btn btn-outline-danger btn-sm rounded-pill px-3"
                                         data-bs-toggle="modal" 
-                                        data-bs-target="#modalEliminarProducto">
+                                        data-bs-target="#modalEliminarProducto{{ $producto->sku }}">
                                     Eliminar
                                 </button>
 
@@ -165,7 +165,7 @@
                             
                             </div>
                 {{-- MODAL CONFIRMACIÓN ELIMINAR PRODUCTO --}}
-                        <div class="modal fade" id="modalEliminarProducto" {{ $producto->sku }} tabindex="-1" aria-hidden="true">
+                        <div class="modal fade" id="modalEliminarProducto{{ $producto->sku }}" tabindex="-1" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header bg-danger text-white">
@@ -188,7 +188,7 @@
                                         </button>
 
                                         {{-- Formulario que se envía al confirmar --}}
-                                        <form id="formEliminarProducto" action="{{ route('productos.destroy', $producto->sku) }}" method="POST" style="display:inline;">
+                                        <form action="{{ route('productos.destroy', $producto->sku) }}" method="POST" style="display:inline;">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger">
