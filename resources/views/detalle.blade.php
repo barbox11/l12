@@ -72,9 +72,10 @@
                 <a href="{{ url('/productos') }}" class="btn btn-secondary">
                     Volver
                 </a>
-                <a href="{{ url('/productos') }}" class="btn btn-secondary">
-                    Agregar a carrito 
-                </a>
+                {{-- BOTÓN AGREGAR A CARRITO --}}
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginPromptModal">
+                    Agregar a carrito
+                </button>
 
                 @if ($producto->estado !== 'inactiva')
 
@@ -113,6 +114,42 @@
 
         </div>
     </div>
+</div>
+
+<!-- Modal de Login -->
+<div class="modal fade" id="loginPromptModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    
+    <!-- Diálogo del modal -->
+    <div class="modal-dialog modal-dialog-centered">
+        
+        <!-- Contenido del modal -->
+        <div class="modal-content">
+            
+            <!-- Encabezado del modal -->
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginModalLabel">Iniciar Sesión</h5>
+                <!-- Botón X para cerrar -->
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            
+            <!-- Cuerpo del modal -->
+            <div class="modal-body">
+                <p>Por favor, inicia sesión para agregar productos al carrito.</p>
+            </div>
+            
+            <!-- Pie del modal con botones -->
+            <div class="modal-footer">
+                <!-- Botón Cancelar (cierra el modal) -->
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                
+                <!-- Botón Iniciar Sesión (redirige a login) -->
+                <a href="{{ route('login') }}" class="btn btn-primary">Iniciar Sesión</a>
+            </div>
+            
+        </div>
+        
+    </div>
+    
 </div>
 
 @include('layout.footer')
