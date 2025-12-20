@@ -34,7 +34,22 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Creamos un nuevo producto
+        $producto = new Producto();
+
+        //Asignamos los valores recibidos del formulario
+        $producto->sku = $request->input('sku');
+        $producto->nombre = $request->input('nombre');
+        $producto->valor = $request->input('valor');
+        $producto->stock = $request->input('stock');
+        $producto->descripción = $request->input('descripcion');
+        $producto->estado = "activo"; // Al crear un producto, por defecto estará activo
+
+        //Guardamos el producto en la base de datos
+        $producto->save();
+
+        //Redireccionamos con un mensaje de éxito
+        return redirect()-> back()->with('success', 'Producto creado exitosamente. Recuerda subir la foto en la carpeta de img');
     }
 
     /**
@@ -54,10 +69,6 @@ class PostController extends Controller
         return view('detalle', compact('producto'));
 
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         //
