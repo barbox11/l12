@@ -16,7 +16,9 @@ class ProductoController extends Controller
     public function index()
     {
         // Obtenemos todos los productos desde la base de datos
-        $productos = DB::table('productos')->get();
+        $productos = DB::table('productos')
+                    ->orderBy('valor', 'desc') 
+                    ->get();
 
         // Enviamos los datos a la vista productos
         return view('productos', [
@@ -66,6 +68,7 @@ class ProductoController extends Controller
     */
     public function cambiarEstado($sku, $estado)
     {
+        
         // Actualizamos el estado del producto
         DB::table('productos')
             ->where('sku', $sku)

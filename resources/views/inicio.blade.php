@@ -62,7 +62,7 @@
                     <p class="text-muted">70.000 $</p>
 
                     {{-- Botón de compra (placeholder) --}}
-                    <a href="#" class="btn btn-dark rounded-pill px-4">Comprar</a>
+                    <a href="{{ url('/productos/detalle/PLT-001') }}" class="btn btn-dark rounded-pill px-4">Comprar</a>
                 </div>
             </div>
         </div>
@@ -78,7 +78,7 @@
                 <div class="card-body text-center">
                     <h5 class="card-title text-dark fw-bold">Mini Orquídea</h5>
                     <p class="text-muted">60.000 $</p>
-                    <a href="#" class="btn btn-dark rounded-pill px-4">Comprar</a>
+                    <a href="{{ url('/productos') }}" class="btn btn-dark rounded-pill px-4">Comprar</a>
                 </div>
             </div>
         </div>
